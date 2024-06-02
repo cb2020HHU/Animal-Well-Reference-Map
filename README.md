@@ -1,7 +1,7 @@
 <div align="center">
-  <a href="https://yakia.misitebao.com/">
-    <img src="assets/logo.png" width="222" height="206" />
-  </a>
+  
+  <img src="assets/logo.PNG" width="222" height="206" />
+  
 
   <h1>Animal Well Reference Map</h1>
   <h2>动物井参考地图</h2>
@@ -54,19 +54,19 @@ Home page, contains the introduction and the map with several layers. You can pr
 
 Eggs page, which contains a button to show/hide all eggs, and an image of the egg room you can click, which will jump to the position on the map automatically.
 
-<img src="assets/eggs_shot.PNG" width="420" height="450" />
+<img src="assets/eggs_shot.jpg" width="420" height="446" />
 
 Rabbits page, a page of 16 rabbits, similar to the Eggs page. You can also check the tips to collect the rabbits.
 
 - In the tips region you may find other items you need.
 
-<img src="assets/rabbits_shot.PNG" width="330" height="250" />
+<img src="assets/rabbits_shot.jpg" width="330" height="246" />
 
 Items page, a page of 12 items(tools). similar to the Rabbits page, you can check the positions of items, and the tips.
 
 - In the tips region you may find other items you need.
 
-<img src="assets/tools_shot.PNG" width="420" height="380" />
+<img src="assets/tools_shot.jpg" width="420" height="376" />
 
 ## Contributors
 
@@ -82,4 +82,4 @@ Me, and the author of the articles about the game in techrattor.net Andrew Stret
 
 ## License
 
-[License MPL](LICENSE)
+[License MPL](https://choosealicense.com/licenses/mpl-2.0/)

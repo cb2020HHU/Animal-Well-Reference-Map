@@ -1,8 +1,8 @@
 <div align="center">
 
-<a href="https://yakia.misitebao.com/">
-    <img src="assets/logo.png" width="222" height="206" />
-  </a>
+
+<img src="assets/logo.PNG" width="222" height="206" />
+  
 
 <h1 >动物井参考地图</h1>
 
@@ -53,15 +53,15 @@
 
 蛋页：包含一个蛋房间的有 64 颗蛋的图片，可以点击蛋快速到达地图的位置。单击图标有提示。
 
-<img src="assets/eggs_shot.PNG" width="420" height="450" />
+<img src="assets/eggs_shot.jpg" width="420" height="446" />
 
 兔子页：包含 16 只兔子的图片，分成 2 行，分别是兔子空间的左边和右边的 8 个兔子。可以点击兔子快速查找位置，单击兔子图标有提示，下方还有提示信息（隐藏状态），如果需要可以查看。
 
-<img src="assets/rabbits_shot.PNG" width="330" height="250" />
+<img src="assets/rabbits_shot.jpg" width="330" height="246" />
 
 道具页：包含 12 个主要道具的图片，可以单击跳转。该页面下方也有提示，可以查看。
 
-<img src="assets/tools_shot.PNG" width="420" height="380" />
+<img src="assets/tools_shot.jpg" width="420" height="376" />
 
 ## 贡献者
 
@@ -77,4 +77,4 @@
 
 ## 许可证
 
-[License MPL](LICENSE)
+[License MPL](https://choosealicense.com/licenses/mpl-2.0/)
