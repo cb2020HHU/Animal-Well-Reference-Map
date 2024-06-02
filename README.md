@@ -82,4 +82,4 @@ Me, and the author of the articles about the game in techrattor.net Andrew Stret
 
 ## License
 
-[License MPL](../LICENSE)
+[License MPL](LICENSE)

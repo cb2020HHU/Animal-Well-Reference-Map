@@ -77,4 +77,4 @@
 
 ## 许可证
 
-[License MPL](../LICENSE)
+[License MPL](LICENSE)
