@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eggs</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #gamemap {
+        height: 800px;
+        width: 90%;
+
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+
+      .button {
+        background-color: #4caf50; /* Green */
+        width: 300px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button:hover {
+        background-color: #a0f195;
+        color: rgb(65, 17, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index_CN.html">主页</a></li>
+      <li><a class="active" href="./eggs.html">蛋</a></li>
+      <li><a href="./rabbits.html">兔子 </a></li>
+      <li><a href="./items.html">道具</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>64 Eggs. 64颗蛋</h1>
+      <p>图片里是蛋房间的全部蛋，你可以:</p>
+      <p>点击按钮显示/隐藏所有的蛋，或者</p>
+      <p>点击图片上的某个蛋，会自动跳转到地图的对应位置。点击图标获得提示。</p>
+      <p>
+        收集完64颗蛋，蛋房间第四层会打开，得到第65颗蛋，然后去boss房间左侧隐藏房间，可以开始新boss战。
+      </p>
+      <p>Enjoy it!</p>
+      <button id="showall" class="button">显示所有蛋</button>
+
+      <div id="eggs_image">
+        <img src="../imgs/64eggs2.png" usemap="#eggmap" />
+        <map id="img_egg_map" name="eggmap"> </map>
+      </div>
+      <div id="gamemap"></div>
+    </div>
+    <script src="../js/data_cn.js"></script>
+    <script src="../js/eggs.js"></script>
+  </body>
+</html>

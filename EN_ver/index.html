@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        width: 100%;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+      #gamemap {
+        height: 800px;
+        width: 90%;
+        /* width: 1000px; */
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a class="active" href="./index.html">Home</a></li>
+      <li><a href="./pages/eggs.html">Eggs</a></li>
+      <li><a href="./pages/items.html">Rabbits </a></li>
+      <li><a href="./pages/items.html">Items</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>Animal Well Reference Map</h1>
+      <p>
+        This is the map of the game "Animal Well". I think it's not convenient
+        to use the existing online maps, so I made this one. The information
+        (positions, tips, etc.) is from the website techraptor.net, you can
+        check their articles for more details.
+      </p>
+
+      <p>
+        This work is for convenience, if you haven't cleared the game yet, try
+        to solve the puzzles by yourself.
+      </p>
+      <p>
+        There are some rooms on the edge of the map that can be connected to the
+        other side, and there are letters at the corresponding positions.
+      </p>
+      <p>
+        On many other pages you can click the item image and jump to the
+        position on the map, whereas on this page you can change the layer in
+        the following map to show different items: use the Top-Right corner
+        button to change the layers, use the mouse scroll wheel to zoom in and
+        out, press and hold the map to drag it.
+      </p>
+      <p>I may update this work in the future. --by C.B.</p>
+      <div id="gamemap"></div>
+    </div>
+    <script src="./js/data.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

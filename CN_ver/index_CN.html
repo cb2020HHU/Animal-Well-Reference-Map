@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        width: 100%;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+      #gamemap {
+        height: 800px;
+        width: 90%;
+        /* width: 1000px; */
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a class="active" href="./index_CN.html">主页</a></li>
+      <li><a href="./pages/eggs.html">蛋</a></li>
+      <li><a href="./pages/items.html">兔子 </a></li>
+      <li><a href="./pages/items.html">道具</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>Animal Well Reference Map 动物井参考地图</h1>
+      <p>
+        这是游戏“动物井”的参考地图，我非常喜欢这个游戏，我认为已有的互动地图不好用，所以做了这个地图。图片来自于我自己的截图，一些信息（坐标，技巧）来自
+        techraptor.net， 你可以查阅他们的文章获得进一步的 细节。
+      </p>
+      <p>这个工具是为了方便查阅，如果你还没通关，请先尝试自己解谜。</p>
+      <p>该地图边缘有些房间可以联通到另一侧，对应通道有字母。</p>
+      <p>
+        其他页面或许可以点击图片然后跳转到相应的地图坐标，这个页面可以通过地图右上角的图层
+        选项调整需要的内容。你还可以使用滚轮放大缩小，按住地图拖拽它，点击图标获得提示信息。希望这个地图可以帮助
+        你享受这个游戏！
+      </p>
+      <p>
+        我可能会继续改进这个项目的内容。有任何错误，疑问，或建议请在github相关页面提出。--
+        by C.B.
+      </p>
+      <div id="gamemap"></div>
+    </div>
+    <script src="./js/data_cn.js"></script>
+    <script src="./js/index_CN.js"></script>
+  </body>
+</html>

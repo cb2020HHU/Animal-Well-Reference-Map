@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eggs</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #gamemap {
+        height: 800px;
+        width: 90%;
+
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+
+      .button {
+        background-color: #4caf50; /* Green */
+        width: 300px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button:hover {
+        background-color: #a0f195;
+        color: rgb(65, 17, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a class="active" href="./eggs.html">Eggs</a></li>
+      <li><a href="./rabbits.html">Rabbits </a></li>
+      <li><a href="./items.html">Items</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>64 Eggs.</h1>
+      <p>The image contains all 64 eggs, you can:</p>
+      <p>Press the button to show/hide all eggs, or</p>
+      <p>
+        Click the egg in the image, and jump to the position in the map
+        automatically, click the icon to show tips.
+      </p>
+
+      <p>Enjoy it!</p>
+      <button id="showall" class="button">Show all eggs</button>
+
+      <div id="eggs_image">
+        <img src="../imgs/64eggs2.png" usemap="#eggmap" />
+        <map id="img_egg_map" name="eggmap"> </map>
+      </div>
+      <div id="gamemap"></div>
+    </div>
+    <script src="../js/data.js"></script>
+    <script src="../js/eggs.js"></script>
+  </body>
+</html>

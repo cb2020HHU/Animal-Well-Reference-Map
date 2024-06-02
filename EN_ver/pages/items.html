@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Items</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+      #gamemap {
+        height: 800px;
+        width: 90%;
+        /* width: 1000px; */
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+      .button {
+        background-color: #4caf50; /* Green */
+        width: 300px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button:hover {
+        background-color: #a0f195;
+        color: rgb(65, 17, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="./eggs.html">Eggs</a></li>
+      <li><a href="./rabbits.html">Rabbits </a></li>
+      <li><a class="active" href="./items.html">Items</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>12 Items(tools).</h1>
+      <p>You can:</p>
+      <p>Click the button to show all items, or</p>
+      <p>Click the item in the image, and jump to the position on the map.</p>
+
+      <p>Enjoy it!</p>
+      <button id="showall" class="button">Show all items</button>
+
+      <div id="tools_image">
+        <img src="../imgs/tools2.png" usemap="#toolmap" />
+        <map id="img_tool_map" name="toolmap"> </map>
+      </div>
+      <div id="gamemap"></div>
+      <div id="tips">
+        <p>If you need tips, you can click the icon and this button to view:</p>
+        <button id="tip_button">check the tips</button>
+        <div id="hidden_tips" style="display: none">
+          <p>
+            Remote: check the positions: <button id="tip_remote">Check</button>
+          </p>
+          <p>
+            Bouncy Ball: there are 5 locations where the Kangaroo can appear
+            <button id="tip_kagan">Check</button>, use the firecracker and it
+            will drop a bag, to get the Kangaroo Medal.
+          </p>
+          <p>
+            Wheel: free 5 cats. You need to find 5 hidden codes.
+            <button id="tip_5cats">Check</button>
+          </p>
+          <p>
+            UV wand: Find 9 matches, and light 9 candles:
+            <button id="tip_UV">Check</button>
+          </p>
+          <p>
+            Others: B. B. Wand is in the upper left room where you clear the
+            game. In the lower right corner of the office, you can get the F.
+            Pack which will enlarge your Firecracker capacity.
+          </p>
+          <p>5 codes to free the cats<button id="tip_code">Check</button></p>
+          <div id="hidden_code" style="display: none">
+            <p>Code 1 Destroy the thorn on the right side ↘ ← ↗ ↘ →</p>
+            <p>Code 2 Hidden passage above →↗ ↑ ↖ ↓</p>
+            <p>Code 3 Use the top to dig the ground on the left ↖↖ ↙ ↙ ↓</p>
+            <p>Code 4 On the wall ↘ ↑ ↘ ↘ ←</p>
+            <p>Code 5 Hidden passage above ← ↓ ↙ ↘ ↑</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/data.js"></script>
+    <script src="../js/tools.js"></script>
+  </body>
+</html>

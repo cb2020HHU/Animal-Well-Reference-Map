@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabbits</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+      #gamemap {
+        height: 800px;
+        width: 90%;
+        /* width: 1000px; */
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+      .button {
+        background-color: #4caf50; /* Green */
+        width: 300px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button:hover {
+        background-color: #a0f195;
+        color: rgb(65, 17, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="./eggs.html">Eggs</a></li>
+      <li><a class="active" href="./rabbits.html">Rabbits </a></li>
+      <li><a href="./items.html">Items</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>16 Rabbits.</h1>
+      <p>Collect 16 rabbits, you can get information of the secret area.</p>
+      <p>You can:</p>
+      <p>Press the button to show/hide all rabbits, or</p>
+      <p>
+        Click the rabbit in the image, and jump to the position on the map
+        automatically, click the icon to show tips.
+      </p>
+      <p>
+        Some rabbits need to solve puzzles to find, if you can't find the clues,
+        you can refer totechraptor.net。
+      </p>
+      <p>Enjoy it!</p>
+      <button id="showall" class="button">Show all rabbits</button>
+
+      <div id="rabs_image">
+        <img src="../imgs/rabbits.png" usemap="#rabmap" />
+        <map id="img_rab_map" name="rabmap"> </map>
+      </div>
+      <div id="gamemap"></div>
+
+      <div id="tips">
+        <p>If you need tips, you can click this button to view:</p>
+        <button id="tip_button">check the tips</button>
+        <div id="hidden_tips" style="display: none">
+          <p>
+            1.Mosaic rabbit: Dig the ground with the spinning top on the left,
+            make the image on the screen look like this :
+          </p>
+          <img src="../imgs/mosaic.png" />
+
+          <p>
+            2.Hidden In The Vines: check the code hidden in the left room's
+            vines.
+          </p>
+          <p>3.Start area: jump on the bubble from the left side.</p>
+          <p>
+            4. Numbers on the map: there are special pillars in the background
+            with symbols like the following image shows: 1st row: symbols, 2nd
+            row: indices. Connect the same symbol follows the indices will get
+            numbers on the map.
+            <button id="tip_num">Check</button>
+          </p>
+          <img src="../imgs/numbers2.png" />
+          <p>
+            5.UV rabbit: use the UV wand near the four fire save point, you may
+            see it.
+          </p>
+          <p>
+            6.Fish rabbit: use the UV wand, and check the arrows on the wall.
+          </p>
+          <p>
+            7.Ghost face rabbit: the face of the ghost will change, check the
+            upper left room of the room where you clear the game to get the
+            codes.
+          </p>
+          <p>
+            8.Spike rabbit: go across the water by disc, and Jump on top of the
+            block to the right and step on the disc, in the middle area of the
+            right room jump to the upper-right corner, you can enter another
+            space. Use the disc to reach the top-left corner.
+          </p>
+          <p>
+            9.Duck Rabbit: In the upper right corner of the map, there are
+            several face symbols on the wall. There are icons in the upper left
+            hidden room after you clear the game. Then go to the right side of
+            the four fires save point, where there is a duck, and blow the
+            flute.
+          </p>
+          <p>
+            10.Dream Rabbit: Stand still anywhere you can jump high (or use
+            bubbles to jump), and a hollow rabbit pattern will appear after a
+            while. Jump up and touch it.
+          </p>
+          <p>
+            11.Save File Rabbit: There are 4 patterns on the wall of the room
+            below this room, which are the icons of three new game save files.
+            The flashes around the flower buds on the starting screen of
+            different save files fly in different directions, and they form a
+            code. Play the flute according to the code.
+          </p>
+          <p>
+            12.No landing rabbit: The wall of this room can only be opened from
+            other rooms, and there is a hidden space behind the wall that can be
+            entered. You need to use the game's mechanism that falls into the
+            water and returns to the original place. method 1: Start from the
+            open wall in the upper right corner of the room, use bubble jump to
+            the left (throw the top to attract the dog or step on disc. There
+            may be a kangaroo in the room on the left, use firecrackers to drive
+            it away in advance), reach the room with a dog and rise, then
+            continue to rise at the bear head teleportation point, reach the
+            upper space and use the remote, then descend and fall into the water
+            in the room to the right of the bear head. Method 2: Bubble jump to
+            the left behind the wall in the upper right corner, then use the
+            disc to bounce on the hanging stone, stand on it and enter the room
+            on the right. Jump down and land on the switchable floor (it's not
+            landing), then continue to use the disc and the remote to jump to
+            the top layer, then bubble jump while using the remote to open the
+            wall, you can go out from the right (be careful to avoid the hanging
+            stones), and then jump into the water in the room on the right.
+          </p>
+          <p>
+            13.TV rabbit: similar to the ghost face rabbit, use the remote to
+            show facial expressions to get the code.
+          </p>
+          <p>
+            14.Origami rabbit: On the second floor of the office(you can get the
+            key after you collect 64 eggs), if your PC connects to a printer, it
+            will print a paper with an Origami rabbit. Follow the instructions
+            to get the code, and play the flute.
+          </p>
+          <p>
+            15.Dog rabbit: in this room there is a dog statue with long ears,
+            lead the ghost dog boss here to touch the statue.
+          </p>
+          <p>
+            16.Crow rabbit: follow the directions that the 9 crows sing, play
+            the flute.
+          </p>
+
+          <p>Check the codes :</p>
+          <button id="code_button">Check</button>
+
+          <div id="hidden_codes" style="display: none">
+            <p>
+              You can check the acticles of techraptor.net to get more details.
+            </p>
+            <p>2.Hidden In The Vines:→↗→↓→↙↙→</p>
+            <p>4.Numbers on the map:↖↑↘↓↙↓←↓</p>
+            <p>6.Fish rabbit:←←↘→↗←←↗</p>
+            <p>7.Ghost face rabbit:←↖↑↗→↘↓↙</p>
+            <p>9.Duck Rabbit:↑↓↑↓←→←→</p>
+            <p>11.Save File Rabbit:→↓←↑ →↓↖↗ →↓←↑ ↘↙↖↗ （传送到初始区域）</p>
+            <p>13.TV rabbit:↗↖↙↘↑←↓→</p>
+            <p>14.Origami rabbit:→↗↑←↖↑←↓</p>
+            <p>
+              The egg room code to open upper right space(to get the office room
+              second floor key): ↖↓→↓ ↖↓→↓ ↖↙↘↙ ↖↙↘↙ ↗←↓← ↗←↓← ↑←↘← ↑←↘← ↖↓→↓
+              ↖↓→↓ ↖↙↘↙ ↖↙↘↙ ↖↗↖↙ ↗↑←↓ ↑↖↙← ↑↖←↖
+            </p>
+            <p>
+              Go to the gaint rabbit room: from right side of the rabbit space:
+              ↑←↑←↑→↑↑ ←↓←↑↑↑→→ ↓→↑↑↑←↓← ↑←↑→→→↑←
+            </p>
+            <p>
+              Get the secret voice record: from the left side of the gaint
+              rabbit room: ←←↑←↓←↑← ↓↓→↓→↑→↓ ↓→↑→↓↓→↓ ←←↓←↑↑←←
+            </p>
+            <p>Others:</p>
+            <p>To the teleport room:→→←←↓↓↑↑</p>
+            <p>To the four fire save point:→↑↗↑↓←↙↓</p>
+            <p>To the top of the well:↘↖↘↖↘↖↘↖</p>
+            <p>To the hidden space of the teleport room:→↑←↓←↓←↓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/rabs.js"></script>
+  </body>
+</html>

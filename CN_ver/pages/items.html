@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Items</title>
+    <!-- get leaflet css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4caf50;
+      }
+      .maindiv {
+        padding: 20px;
+        margin-top: 30px;
+        background-color: #c3eec2;
+        display: flex;
+        flex-direction: column;
+      }
+      #gamemap {
+        height: 800px;
+        width: 90%;
+        /* width: 1000px; */
+        display: flex;
+        background-color: black;
+        z-index: 98;
+      }
+      .button {
+        background-color: #4caf50; /* Green */
+        width: 300px;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .button:hover {
+        background-color: #a0f195;
+        color: rgb(65, 17, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index_CN.html">主页</a></li>
+      <li><a href="./eggs.html">蛋</a></li>
+      <li><a href="./rabbits.html">兔子 </a></li>
+      <li><a class="active" href="./items.html">道具</a></li>
+    </ul>
+    <div class="maindiv">
+      <h1>12 Items(tools). 12个道具</h1>
+      <p>你可以：</p>
+      <p>点击按钮显示所有道具，或者</p>
+      <p>点击图片中的道具，然后跳转到地图的对应位置。</p>
+      <p>前8个是基本道具，后面四个需要完成/收集一些东西才能获得。</p>
+
+      <p>Enjoy it!</p>
+      <button id="showall" class="button">显示所有道具</button>
+
+      <div id="tools_image">
+        <img src="../imgs/tools2.png" usemap="#toolmap" />
+        <map id="img_tool_map" name="toolmap"> </map>
+      </div>
+      <div id="gamemap"></div>
+      <div id="tips">
+        <p>如果你需要线索，可以单击这个按钮查看：</p>
+        <button id="tip_button">查看线索</button>
+        <div id="hidden_tips" style="display: none">
+          <p>
+            鞭炮：肯定会遇到，可以照亮房间，驱赶怪物，初始容量3，后期可以扩容。
+          </p>
+          <p>
+            动物笛子：收集8个蛋，地图中央的蛋房间的第一层打开，往左的房间里有箱子，
+            有很多曲子可以传送到不同地方。
+          </p>
+          <p>
+            石灯：地图的最后区域的存档点左侧，开机关进入，可以避开很多危险。
+          </p>
+          <p>陀螺：收集32个蛋，蛋房间第三层，可以挖地，破坏刺，吸引狗。</p>
+          <p>圆盘：在大狗雕塑嘴里，可以打开开关，跳上去飞行，吸引狗。</p>
+          <p>
+            泡泡棒：地图左边区域，可以泡泡跳，可以一直上升。空中往下按可以站到泡泡上，按住下可以加速下落。
+          </p>
+          <p>
+            悠悠球：地图右侧的大鸟左侧的掉下去的右边房间，可以打开很多弯曲通道的按钮，吸引龙猫，破坏刺。
+          </p>
+          <p>
+            妙妙圈（弹簧）：地图中央右侧的阶梯上方，软弹簧，可以从阶梯上逐级落下。
+          </p>
+          <p>
+            遥控器：打败变色龙boss后，第二次遇到的变色龙的身后可以拿到蛇盘，放在起始区域的的一个石头上开门进入，向下通过有蛇的房间向左。
+            <button id="tip_remote">查看</button>
+            可以遥控有开关的房间的墙壁。
+          </p>
+          <p>
+            弹球：地图上有5个区域
+            <button id="tip_kagan">查看</button>
+            会随机遇到袋鼠，用鞭炮驱赶，会掉落袋鼠碎片，拿到3个袋鼠碎片，地图左上方蝙蝠房间左侧（或者地图左上角袋鼠形状房间的右侧），有个地方可以放碎片，进入得到弹球。弹球可以消除长方形的特殊砖块，可以破坏刺。
+          </p>
+          <p>
+            轮子：救5只猫。猫位于地图右下区域的5个笼子内，需要找到隐藏的箭头提示，
+            <button id="tip_5cats">查看</button>
+            然后用笛子在猫的笼子外吹奏，可以打开笼子。然后回到地图左下的区域，存档点下方的左侧房间下面的地面可以用陀螺挖地进入。轮子可以越过一些针刺地面。
+          </p>
+          <p>
+            UV紫外灯: 找到9根火柴，点亮地图上的9只蜡烛，
+            <button id="tip_UV">查看</button>
+            在出生点左侧房间进入左边鱼嘴拿到鱼牌，然后地图左下的火焰处右侧房间的鱼头上方进去陀螺挖地，可以打开隐藏通道，进入放入鱼牌，开启左下的通道，走到尽头开始boss战，按泡泡方向吹笛子可进入口中，
+            或者直接在任意地方吹特殊的传送密码拿到。UV灯可以看到一些隐藏的东西。
+          </p>
+          <p>
+            其他：通关房间左侧上方隐藏房间有无限泡泡棒，办公室房间的右下角可以拿到腰包，扩充鞭炮数量。大钟左下角有秒表。竖井顶部右边挖地可以到达计步器。
+          </p>
+          <p>救5只猫的密码 <button id="tip_code">查看</button></p>
+          <div id="hidden_code" style="display: none">
+            <p>密码1：右边破坏刺： ↘ ← ↗ ↘ →</p>
+            <p>密码2：上方的隐藏通道内： →↗ ↑ ↖ ↓</p>
+            <p>密码3：左边陀螺挖地： ↖↖ ↙ ↙ ↓</p>
+            <p>密码4： 大鸟背后的墙上：↘ ↑ ↘ ↘ ←</p>
+            <p>密码5： 上方的隐藏通道：← ↓ ↙ ↘ ↑ 无限泡泡棒可以进</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/data_cn.js"></script>
+    <script src="../js/tools.js"></script>
+  </body>
+</html>
